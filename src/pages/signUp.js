@@ -80,13 +80,16 @@ export default function SignUp() {
       )
     ) {
       try {
-        const { data } = axios.post("http://localhost:5005/users/addUser", {
-          name: userData.name,
-          state: userData.state,
-          city: userData.city,
-          email: userData.email,
-          password: userData.password,
-        });
+        const { data } = axios.post(
+          "https://tools-on-rent.herokuapp.com/users/addUser",
+          {
+            name: userData.name,
+            state: userData.state,
+            city: userData.city,
+            email: userData.email,
+            password: userData.password,
+          }
+        );
         localStorage.setItem("name", userData.name);
         localStorage.setItem("state", userData.state);
         localStorage.setItem("city", userData.city);

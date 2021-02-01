@@ -1,4 +1,3 @@
-
 import react, { useState, useEffect } from "react";
 import SearchTiles from "../components/searchTIles";
 import axios from "axios";
@@ -25,16 +24,16 @@ function Header() {
   ];
   const postdata = useSelector((state) => state.searchu);
   const citynamesData = useSelector((state) => state.cityu);
-  var citynamesData2=[];
-  
+  var citynamesData2 = [];
+
   console.log(citynamesData);
-  for(var i=0;i<citynamesData.length;i++){
-citynamesData2.push(citynamesData[i].city);
+  for (var i = 0; i < citynamesData.length; i++) {
+    citynamesData2.push(citynamesData[i].city);
   }
   const set1 = new Set(citynamesData2);
- const citynamesData3= Array.from(set1);
+  const citynamesData3 = Array.from(set1);
   //console.log(set1);
-  
+
   useEffect(() => {
     //dispatch(showallposts());
   }, [postdata, citynamesData]);
@@ -56,7 +55,7 @@ citynamesData2.push(citynamesData[i].city);
     e.preventDefault();
     try {
       const dataw = await axios.post(
-        "http://localhost:5005/post/search",
+        "https://tools-on-rent.herokuapp.com/post/search",
         searchmee
       );
       dispatch({ type: SEARCH, payload: dataw.data });
@@ -79,7 +78,7 @@ citynamesData2.push(citynamesData[i].city);
     // e.preventDefault();
     try {
       const dataw = await axios.post(
-        "http://localhost:5005/post/cityname",
+        "https://tools-on-rent.herokuapp.com/post/cityname",
         searchmee
       );
       dispatch({ type: CITYNAME, payload: dataw.data });
@@ -97,11 +96,13 @@ citynamesData2.push(citynamesData[i].city);
           <div>
             <img className="logoheader" src="logo192.png" />
             <a className="a">Help</a>
-            <a className="a" href="/products">Rent your tools</a>
-            <a className="a" href="/aboutUs" >About</a>
-            
+            <a className="a" href="/products">
+              Rent your tools
+            </a>
+            <a className="a" href="/aboutUs">
+              About
+            </a>
           </div>
-          
         </div>
 
         <div className="texti">
@@ -190,12 +191,7 @@ citynamesData2.push(citynamesData[i].city);
       <div className="footermee f3">
         <p className="copyright">copyright 2021</p>
       </div>
-      
     </div>
-    
-  
- 
-    
   );
 }
 

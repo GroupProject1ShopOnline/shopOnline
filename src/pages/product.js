@@ -10,7 +10,6 @@ import "react-toastify/dist/ReactToastify.css";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      
       margin: theme.spacing(1),
       width: "25ch",
     },
@@ -112,16 +111,19 @@ export default function Product() {
       )
     ) {
       try {
-        const { data } = axios.post("http://localhost:5005/users/addItem", {
-          title: itemData.title,
-          pid: itemData.pid,
-          description: itemData.description,
-          cpa: itemData.cpa,
-          city: itemData.city,
-          state: itemData.state,
-          images: itemData.images,
-          sender: itemData.sender,
-        });
+        const { data } = axios.post(
+          "https://tools-on-rent.herokuapp.com/users/addItem",
+          {
+            title: itemData.title,
+            pid: itemData.pid,
+            description: itemData.description,
+            cpa: itemData.cpa,
+            city: itemData.city,
+            state: itemData.state,
+            images: itemData.images,
+            sender: itemData.sender,
+          }
+        );
         MoveToHome();
       } catch (error) {
         console.log(error);

@@ -16,18 +16,29 @@ export default function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(userData);
     try {
-      const { data } = await axios.post("http://localhost:5005/users/start", {
-        userID: userData.userID,
-        pass: userData.pass,
-      });
-      console.log(data);
-      localStorage.setItem("name", data.name);
-      localStorage.setItem("state", data.state);
-      localStorage.setItem("city", data.city);
-      localStorage.setItem("email", data.email);
-      MoveToHome();
+      const { data } = await axios.post(
+        "https://tools-on-rent.herokuapp.com/users/start",
+        {
+          userID: userData.userID,
+          pass: userData.pass,
+        }
+      );
+      console.log("====================================");
+      // console.log(data[0]);
+      console.log("====================================");
+      if (
+        data[0].email === userData.userID ||
+        data[0].password === userData.pass
+      ) {
+        localStorage.setItem("name", data[0].name);
+        localStorage.setItem("state", data[0].state);
+        localStorage.setItem("city", data[0].city);
+        localStorage.setItem("email", data[0].email);
+        MoveToHome();
+      } else {
+        alert("Please check your email and password!!!");
+      }
     } catch (error) {
       console.log(error);
     }

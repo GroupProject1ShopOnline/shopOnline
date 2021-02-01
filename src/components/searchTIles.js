@@ -16,7 +16,7 @@ function Tiles({ postdetails }) {
 
     try {
       const dataw = await axios.post(
-        "http://localhost:5005/post/updateliveproduct",
+        "https://tools-on-rent.herokuapp.com/post/updateliveproduct",
         searchmee
       );
       dispatch({ type: PRODUCTPAGELIVE, payload: dataw.data });
