@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/shopOnline/static/css/main.64d4a77f.chunk.css",
+    "main.js": "/shopOnline/static/js/main.4827c80a.chunk.js",
+    "main.js.map": "/shopOnline/static/js/main.4827c80a.chunk.js.map",
+    "runtime-main.js": "/shopOnline/static/js/runtime-main.ce73f357.js",
+    "runtime-main.js.map": "/shopOnline/static/js/runtime-main.ce73f357.js.map",
+    "static/css/2.03991310.chunk.css": "/shopOnline/static/css/2.03991310.chunk.css",
+    "static/js/2.355b7ca5.chunk.js": "/shopOnline/static/js/2.355b7ca5.chunk.js",
+    "static/js/2.355b7ca5.chunk.js.map": "/shopOnline/static/js/2.355b7ca5.chunk.js.map",
+    "index.html": "/shopOnline/index.html",
+    "static/css/2.03991310.chunk.css.map": "/shopOnline/static/css/2.03991310.chunk.css.map",
+    "static/css/main.64d4a77f.chunk.css.map": "/shopOnline/static/css/main.64d4a77f.chunk.css.map",
+    "static/js/2.355b7ca5.chunk.js.LICENSE.txt": "/shopOnline/static/js/2.355b7ca5.chunk.js.LICENSE.txt",
+    "static/media/aditya.5f92c565.jpeg": "/shopOnline/static/media/aditya.5f92c565.jpeg",
+    "static/media/niket.d9aa563a.jpg": "/shopOnline/static/media/niket.d9aa563a.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ce73f357.js",
+    "static/css/2.03991310.chunk.css",
+    "static/js/2.355b7ca5.chunk.js",
+    "static/css/main.64d4a77f.chunk.css",
+    "static/js/main.4827c80a.chunk.js"
+  ]
+}
