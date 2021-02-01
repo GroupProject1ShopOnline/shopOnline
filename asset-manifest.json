@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/shopOnline/static/css/main.64d4a77f.chunk.css",
-    "main.js": "/shopOnline/static/js/main.14fa9105.chunk.js",
-    "main.js.map": "/shopOnline/static/js/main.14fa9105.chunk.js.map",
+    "main.js": "/shopOnline/static/js/main.cd3d9bb8.chunk.js",
+    "main.js.map": "/shopOnline/static/js/main.cd3d9bb8.chunk.js.map",
     "runtime-main.js": "/shopOnline/static/js/runtime-main.ce73f357.js",
     "runtime-main.js.map": "/shopOnline/static/js/runtime-main.ce73f357.js.map",
     "static/css/2.03991310.chunk.css": "/shopOnline/static/css/2.03991310.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.03991310.chunk.css",
     "static/js/2.355b7ca5.chunk.js",
     "static/css/main.64d4a77f.chunk.css",
-    "static/js/main.14fa9105.chunk.js"
+    "static/js/main.cd3d9bb8.chunk.js"
   ]
 }
