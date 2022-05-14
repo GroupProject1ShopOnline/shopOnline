@@ -3,7 +3,10 @@ import SearchTiles from "../components/searchTIles";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { SEARCH, CITYNAME } from "../components/actions/actionType";
-
+import "./slideshow.css"
+import 'react-slideshow-image/dist/styles.css'
+import { Slide } from 'react-slideshow-image';
+import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 function Header() {
   //   const [userData, setUserData] = useState({
   //     name: "",
@@ -18,6 +21,8 @@ function Header() {
     city: "",
     tool: "",
   });
+  const [filterdata, setFilterdata] = useState([{ title: "green", id: "1" }]);
+
   const postme = [
     { tool: "hammer", state: "Rajputana", city: "jaipur" },
     { tool: "drill", state: "raj", city: "degana" },
@@ -59,7 +64,10 @@ function Header() {
         searchmee
       );
       dispatch({ type: SEARCH, payload: dataw.data });
+      console.log("qq");
       console.log(dataw.data);
+
+       setFilterdata(dataw.data);
       //console.log(postdata);
     } catch (err) {
       console.log(err);
@@ -88,6 +96,74 @@ function Header() {
       console.log(err);
     }
   };
+  const slideImages = [
+    {
+      url: 'https://empire-s3-production.bobvila.com/articles/wp-content/uploads/2022/01/The-Best-Tool-Rental-Service-Options.jpg',
+
+    },
+    {
+      url: 'https://craftsmanprotools.com/wp-content/uploads/2020/06/buying-reconditioned-tools.jpg',
+      caption: 'Slide 2'
+    },
+    {
+      url: 'https://files.sysers.com/cp/upload/rentals9700/gallery/full/toolsrental.jpg',
+      caption: 'Slide 3'
+    },
+  ];
+
+  //search box
+  const items = [
+    {
+      id: 0,
+      name: 'Cobol'
+    },
+    {
+      id: 1,
+      name: 'JavaScript'
+    },
+    {
+      id: 2,
+      name: 'Basic'
+    },
+    {
+      id: 3,
+      name: 'PHP'
+    },
+    {
+      id: 4,
+      name: 'Java'
+    }
+  ]
+
+  const handleOnSearch = (string, results) => {
+    // onSearch will have as the first callback parameter
+    // the string searched and for the second the results.
+    console.log("1");
+    console.log(string, results)
+  }
+
+  const handleOnHover = (result) => {
+    // the item hovered
+    console.log(result)
+  }
+
+  const handleOnSelect = (item) => {
+    // the item selected
+    console.log(item)
+  }
+
+  const handleOnFocus = () => {
+    console.log('Focused')
+  }
+
+  const formatResult = (item) => {
+    return (
+      <>
+        <span style={{ display: 'block', textAlign: 'left' }}>name: {item.title}</span>
+      </>
+    )
+  }
+
 
   return (
     <div>
@@ -102,15 +178,39 @@ function Header() {
             <a className="a" href="/aboutUs">
               About
             </a>
+            <a className="a" href="/signIn">
+              Login
+            </a>
           </div>
         </div>
 
-        <div className="texti">
-          <h1 className="text ">EARN PASSIVE </h1>
-          <h1 className="text">RENTAL INCOME </h1>
-          <button className="buttonexplore ">UPLOAD YOUR TOOL TODAY</button>
+
+        <div style={{ display: 'flex', flexDirection: 'row', alignSelf: 'center', flex: 1 }}>
+
+          <div className="texti">
+            <h1 className="text ">Earn Passive </h1>
+            <h1 className="text">Rental Income </h1>
+            <button className="buttonexplore ">Rent Your Tools Today  </button>
+          </div>
+
+          <div className="slide-container">
+            <Slide>
+              {slideImages.map((slideImage, index) => (
+                <div className="each-slide" key={index}>
+                  <div style={{ 'backgroundImage': `url(${slideImage.url})` }}>
+
+                  </div>
+                </div>
+              ))}
+            </Slide>
+          </div>
+
         </div>
       </div>
+
+
+
+
       <div className="searchme">
         <form noValidate onSubmit={handleSubmit}>
           <select
@@ -136,6 +236,7 @@ function Header() {
             id="city"
             onChange={(e) => {
               setsearchdata({ ...searchdata, city: e.target.value });
+              handleSubmit(e);
             }}
           >
             <option value="Select your city">Select your city</option>
@@ -148,7 +249,7 @@ function Header() {
             <option value="null">we only have services in Above Cities</option>
           </select>
 
-          <input
+          {/* <input
             className="searchname a1"
             type="text"
             placeholder="type tool name"
@@ -156,41 +257,35 @@ function Header() {
             onChange={(e) => {
               setsearchdata({ ...searchdata, tool: e.target.value });
             }}
-          />
-          <button className="buttonSearch ">
+          /> */}
+          {/* <button className="buttonSearch ">
             <img src="https://img.icons8.com/pastel-glyph/64/000000/search--v3.png" />
-          </button>
+          </button> */}
+
+          <div style={{ width: 400 }}>
+            <ReactSearchAutocomplete
+              items={filterdata}
+              fuseOptions={{ keys: ["title","description"] }}
+            onSearch={handleOnSearch}
+            onHover={handleOnHover}
+            onSelect={handleOnSelect}
+            onFocus={handleOnFocus}
+            autoFocus
+            formatResult={formatResult}
+            />
+          </div>
+
+
+
         </form>
       </div>
+
       <div className="tiles">
         {postdata.map((post) => (
           <SearchTiles postdetails={post} />
         ))}
       </div>
-      <div class="gallery-image">
-        <div class="img-box">
-          <img src="https://picsum.photos/350/250?image=444" alt="" />
-          <div class="transparent-box">
-            <div class="caption">
-              <p>Library</p>
-              <p class="opacity-low">Architect Design</p>
-            </div>
-          </div>
-        </div>
-        <div class="img-box">
-          <img src="https://picsum.photos/350/250/?image=232" alt="" />
-          <div class="transparent-box">
-            <div class="caption">
-              <p>Night Sky</p>
-              <p class="opacity-low">Cinematic</p>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div className="footermee f3">
-        <p className="copyright">copyright 2021</p>
-      </div>
     </div>
   );
 }

@@ -54,8 +54,10 @@ export default function SignIn() {
   backgroundAttachment: "fixed",
   alignItems: "center",
   paddingTop:"20vh",
-  
-}}>
+   /* Add the blur effect 
+   filter: "blur(8px)",
+  WebkitFilter: "blur(8px)",*/
+ }}>
    <div style={{marginTop:"0vh"}}>
       <div className="signin">
       <div className="small">

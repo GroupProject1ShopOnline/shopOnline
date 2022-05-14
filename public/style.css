@@ -40,8 +40,8 @@ form{
   margin-bottom: 20px;
 }
 .Mheader{
-  background-color: #008573;
-  height: 70px;
+  background-color: #fcf001;
+  height: auto;
   padding: 10px;
 
 }
@@ -56,26 +56,26 @@ form{
 }
 .a{
   padding: 10px;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 font-size: large;
 margin: 10px;
-
+font-weight: normal;
 }
 .a1{
   font-size: large;
 }
-a:hover{
-  color: rgb(255, 157, 0);
-  
+.a:hover{
+  color: rgb(255, 111, 0);
+  font-weight: bold;
 }
 .topportion{
-background-color: yellow;
-height: 100vh;
-background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/8646c479493401.5cc4c9ebb7d99.png);
+background-color: rgb(255, 255, 255);
+height: auto;
 background-repeat: no-repeat;
-height: "120vh";
+height: "auto";
 background-size:cover;
 align-items: center;
+
 }
 .topportionProduct{
   background-color: rgb(0, 0, 0);
@@ -85,10 +85,10 @@ align-items: center;
   align-items: center;
 }
 .text{
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 42px;
   
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Arial, Helvetica, sans-serif, Courier, monospace;
 }
 .texti{
 margin-top: 20vh;
@@ -96,21 +96,18 @@ margin-left: 7vw;
 }
 .buttonexplore{
   
-  padding: 5px;
+  padding: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-radius: 15px;
-  border: solid rgb(232, 235, 234) 3px;
-  font-size: 14px;
+  border: solid rgb(53, 53, 53) 1px;
+  font-size: 15px;
   font-weight: bold;
-  background-color: rgb(7, 128, 139);
+  background-color: rgb(255, 255, 0);
   animation: mymove 1s infinite;
-  color: white;
+  color: rgb(0, 0, 0);
 }
-@keyframes mymove {
-  10% {background-color: rgb(190, 73, 73);}
-  20%{background-color: rgb(195, 113, 6);}
-  50%{background-color: rgb(195, 176, 6);}
-  100%{background-color: rgb(0, 113, 128);}
-}
+
 .searchme{
   min-height: 200px;
   background-color: #e1d89f;
@@ -118,7 +115,7 @@ margin-left: 7vw;
 .searchname{
   margin: 30px;
   margin-bottom: 1px;
-  border: rgb(1, 84, 95) solid 5px ;
+  border: rgb(1, 84, 95) solid 1px ;
   border-radius: 10px;
   padding: 8px;
  min-width: 200px;
