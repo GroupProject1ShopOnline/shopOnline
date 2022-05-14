@@ -203,23 +203,26 @@ padding: 30px;
 hr{
 height:4px;border-width:10;color:gray;background-color:gray
 }
+
 .buttonpro{
 padding: 5px;
   border-radius: 15px;
-  border: solid rgb(232, 235, 234) 3px;
+  border: solid black 1px;
   font-size: 14px;
   font-weight: bold;
-  background-color: rgb(7, 128, 139);
-  
-  color: white;
-
+  background-color: yellow;
+  padding: 8px;
+  color: black;
+  align-self: center;
+  width: 300px;
 }
+
 .inputproduct{
-background-color: khaki;
-font-size:25px;
+font-size:18px;
 margin: 5px;
 margin-left: 0;
 }
+
 .top-right{
 position: absolute;
 top: 10px;

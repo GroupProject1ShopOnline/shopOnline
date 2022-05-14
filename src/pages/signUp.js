@@ -118,6 +118,7 @@ export default function SignUp() {
         backgroundSize: "cover",
         backgroundAttachment: "fixed",
         alignItems: "center",
+        fontSize: "15px",
       }}
     >
       <div
@@ -255,6 +256,7 @@ export default function SignUp() {
                   fullWidth
                   color="primary"
                   type="submit"
+                  style={{ fontSize: "16px" }}
                 >
                   Submit
                 </Button>
