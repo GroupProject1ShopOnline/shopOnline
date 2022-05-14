@@ -107,16 +107,34 @@ margin-left: 7vw;
   animation: mymove 1s infinite;
   color: rgb(0, 0, 0);
 }
-
+.buttonexplore1{
+  
+  padding: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 4px;
+  border: solid rgb(53, 53, 53) 1px;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: white;
+  
+  color: rgb(0, 0, 0);
+  width:"100%"
+}
+.buttonexplore1:hover{
+  background-color: rgb(255, 255, 0);
+}
 .searchme{
-  min-height: 200px;
-  background-color: #e1d89f;
+ 
+  background-color: #fbfae3;
+  align-self: center;
 }
 .searchname{
-  margin: 30px;
+  margin: 20px;
   margin-bottom: 1px;
-  border: rgb(1, 84, 95) solid 1px ;
+  border: rgb(232, 239, 239) solid 1px ;
   border-radius: 10px;
+  
   padding: 8px;
  min-width: 200px;
  
@@ -134,8 +152,8 @@ select{
 .tiles{
  /* background-image: url(https://previews.123rf.com/images/tupungato/tupungato1709/tupungato170900214/85822277-tools-background-doodle-texture-.jpg);
   */
-  background-color: #e1d89f;
-  text-align: center;
+  background-color: white;
+  text-align: left;
 }
 .footermee{
   min-height: 50px;
@@ -162,11 +180,12 @@ select{
   min-width: 300px;
   max-width: 300px;
   font-weight: bolder;
-  background-color: #008891;
+  background-color: #fbfbb6;
   border-radius: 10px;
   display: inline-block;
   margin: 10px;
 padding: 20px;
+align-items: center;
 }
 
 

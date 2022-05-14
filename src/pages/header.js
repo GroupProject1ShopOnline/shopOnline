@@ -159,7 +159,7 @@ function Header() {
   const formatResult = (item) => {
     return (
       <>
-        <span style={{ display: 'block', textAlign: 'left' }}>name: {item.title}</span>
+        <span style={{ display: 'block', textAlign: 'left' }}>{item.title}</span>
       </>
     )
   }
@@ -213,6 +213,7 @@ function Header() {
 
       <div className="searchme">
         <form noValidate onSubmit={handleSubmit}>
+          <div style={{display: 'inline-block'}}>
           <select
             className="searchname a1"
             value={searchdata.state}
@@ -249,6 +250,7 @@ function Header() {
             <option value="null">we only have services in Above Cities</option>
           </select>
 
+          </div>
           {/* <input
             className="searchname a1"
             type="text"
@@ -262,7 +264,7 @@ function Header() {
             <img src="https://img.icons8.com/pastel-glyph/64/000000/search--v3.png" />
           </button> */}
 
-          <div style={{ width: 400 }}>
+          <div style={{ width: 400,margin:'20px' }}  >
             <ReactSearchAutocomplete
               items={filterdata}
               fuseOptions={{ keys: ["title","description"] }}

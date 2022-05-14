@@ -29,13 +29,15 @@ function Tiles({ postdetails }) {
   };
 
   return (
-    <div className="tilesIndividual">
+    <div className="tilesIndividual" style={{textAlign:"center"}}>
+      <img style={{width:"60%", height:"auto"}}  src={ postdetails.images ||"https://media.istockphoto.com/vectors/image-preview-icon-picture-placeholder-for-website-or-uiux-design-vector-id1222357475?k=20&m=1222357475&s=612x612&w=0&h=jPhUdbj_7nWHUp0dsKRf4DMGaHiC16kg_FSjRRGoZEI="}/>
       <h1> {postdetails.title}</h1>
-      <h2>₹ {postdetails.cpa} per hour</h2>
-      <h4>Tools Discription : {postdetails.description}</h4>
-      <button value={postdetails.pid} type="submit" onClick={handleSubmit}>
-        QUICK VIEW
+      <h2>₹ {postdetails.cpa} /hr</h2>
+     
+      <button className="buttonexplore1" value={postdetails.pid} type="submit" onClick={handleSubmit}>
+      View Details
       </button>
+     
     </div>
   );
 }

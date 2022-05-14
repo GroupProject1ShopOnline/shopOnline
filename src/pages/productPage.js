@@ -142,7 +142,7 @@ function Product() {
               placeholder="+91 123456789"
               name="mytel"
               type="tel"
-              pattern="[+]{1}[0-9]{10,11}"
+              pattern="[+]{1}[0-9]{10,12}"
             />
             <br />
             <br />
