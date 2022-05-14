@@ -6,7 +6,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import Axios from "axios";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   textField: {
-    border: "1.5px solid blue",
     backgroundColor: "rgb(255,255,255,1)",
     borderRadius: theme.shape.borderRadius,
     textColor: "white",
@@ -43,6 +42,14 @@ export default function SignUp() {
     password: "",
   });
 
+  const [formError, setError] = useState({
+    name: false,
+    state: false,
+    city: false,
+    email: false,
+    password: false,
+  });
+
   const classes = useStyles();
   const history = useHistory();
 
@@ -67,8 +74,6 @@ export default function SignUp() {
           progress: undefined,
         }
       );
-
-    console.log(userData);
     e.preventDefault();
     if (
       submitValidator(
@@ -80,7 +85,7 @@ export default function SignUp() {
       )
     ) {
       try {
-        const { data } = axios.post(
+        const {} = axios.post(
           "https://tools-on-rent.herokuapp.com/users/addUser",
           {
             name: userData.name,
@@ -94,7 +99,6 @@ export default function SignUp() {
         localStorage.setItem("state", userData.state);
         localStorage.setItem("city", userData.city);
         localStorage.setItem("email", userData.email);
-        console.log("Data added.");
         MoveToHome();
       } catch (err) {
         console.log(err);
@@ -110,7 +114,7 @@ export default function SignUp() {
       style={{
         backgroundImage: `url("https://wallpapercave.com/wp/wp4185680.jpg")`,
         backgroundRepeat: "no-repeat",
-        height: "120vh",
+        height: "100vh",
         backgroundSize: "cover",
         backgroundAttachment: "fixed",
         alignItems: "center",
@@ -129,33 +133,53 @@ export default function SignUp() {
         <center>
           <form noValidate onSubmit={handleSubmit}>
             <div className="SignUpCardContent">
-              <h2 style={{ marginBottom: "20px", color: "white" }}>Sign Up</h2>
+              <h2
+                style={{
+                  marginTop: "20px",
+                  marginBottom: "20px",
+                  color: "white",
+                }}
+              >
+                Sign Up
+              </h2>
               <div className="textField">
                 <TextField
-                  variant="standard"
+                  variant="filled"
                   name="name"
                   fullWidth
                   label="Full Name"
                   value={userData.name}
                   onChange={(e) => {
                     setUserData({ ...userData, name: e.target.value });
+                    setError({
+                      ...formError,
+                      name: e.target.value.trim().length > 3 ? false : true,
+                    });
                   }}
-                  helperText="At least four characters."
-                  error={userData.name.trim().length > 3 ? false : true}
+                  helperText={
+                    formError.name ? "At least four characters." : null
+                  }
+                  error={formError.name}
                   className={classes.textField}
                 />
               </div>
               <div className="textField">
                 <TextField
                   name="city"
-                  variant="standard"
+                  variant="filled"
                   fullWidth
                   label="City"
                   value={userData.city}
-                  helperText="At least two characters."
-                  error={userData.city.trim().length > 1 ? false : true}
+                  helperText={
+                    formError.city ? "At least two characters." : null
+                  }
+                  error={formError.city}
                   onChange={(e) => {
                     setUserData({ ...userData, city: e.target.value });
+                    setError({
+                      ...formError,
+                      city: e.target.value.trim().length > 1 ? false : true,
+                    });
                   }}
                   className={classes.textField}
                 />
@@ -163,14 +187,20 @@ export default function SignUp() {
               <div className="textField">
                 <TextField
                   name="state"
-                  variant="standard"
+                  variant="filled"
                   fullWidth
                   label="State"
                   value={userData.state}
-                  helperText="At least three characters."
-                  error={userData.state.trim().length > 2 ? false : true}
+                  helperText={
+                    formError.state ? "At least three characters." : null
+                  }
+                  error={setError.state}
                   onChange={(e) => {
                     setUserData({ ...userData, state: e.target.value });
+                    setError({
+                      ...formError,
+                      state: e.target.value.trim().length > 2 ? false : true,
+                    });
                   }}
                   className={classes.textField}
                 />
@@ -178,14 +208,20 @@ export default function SignUp() {
               <div className="textField">
                 <TextField
                   name="email"
-                  variant="standard"
+                  variant="filled"
                   fullWidth
                   label="Email"
                   value={userData.email}
-                  helperText="At least four characters."
-                  error={userData.email.trim().length > 3 ? false : true}
+                  helperText={
+                    formError.email ? "At least four characters." : null
+                  }
+                  error={formError.email}
                   onChange={(e) => {
                     setUserData({ ...userData, email: e.target.value });
+                    setError({
+                      ...formError,
+                      email: e.target.value.trim().length > 3 ? false : true,
+                    });
                   }}
                   className={classes.textField}
                 />
@@ -193,14 +229,20 @@ export default function SignUp() {
               <div className="textField">
                 <TextField
                   name="password"
-                  variant="standard"
+                  variant="filled"
                   fullWidth
                   label="Password"
                   value={userData.password}
-                  helperText="At least four characters."
-                  error={userData.password.trim().length > 3 ? false : true}
+                  helperText={
+                    formError.password ? "At least four characters." : null
+                  }
+                  error={formError.password}
                   onChange={(e) => {
                     setUserData({ ...userData, password: e.target.value });
+                    setError({
+                      ...formError,
+                      password: e.target.value.trim().length > 3 ? false : true,
+                    });
                   }}
                   type="password"
                   className={classes.textField}

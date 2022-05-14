@@ -9,7 +9,7 @@ import { BrowserRouter, Link, Route } from "react-router-dom";
 const App = () => {
   return (
     <BrowserRouter>
-      <div>
+      <div style={{ width: "100vw", height: "100vh" }}>
         <main>
           <Route path="/" component={SignUp} exact />
           <Route path="/SignIn" component={SignIn} exact />
