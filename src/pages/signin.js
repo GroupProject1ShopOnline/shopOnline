@@ -41,34 +41,47 @@ export default function SignIn() {
       }
     } catch (error) {
       console.log(error);
+      alert("Please check your email and password!!!");
     }
   };
 
   return (
-    <div className="signin">
+ <div style={{
+  backgroundImage: `url("https://www.teahub.io/photos/full/30-301193_tools-and-equipment.jpg")`,
+  backgroundRepeat: "no-repeat",
+  height: "100vh",
+  backgroundSize: "cover",
+  backgroundAttachment: "fixed",
+  alignItems: "center",
+  paddingTop:"20vh",
+  
+}}>
+   <div style={{marginTop:"0vh"}}>
+      <div className="signin">
       <div className="small">
-        <div className="brand-wrapper">
+        <div style={{alignItems: "center",display: "flex",justifyContent: "center"}}>
           <img src="/logo192.png" alt="logo" className="logo" />
         </div>
-        <h3>Welcome Back ! Sign into Your Account</h3>
+        <h3 style={{margin:20}}>Welcome Back ! Sign into Your Account</h3>
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <input
               type="email"
-              className="form-control input"
+              className=" input"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Email Address"
               onChange={(e) => {
                 setUserData({ ...userData, userID: e.target.value });
               }}
+             
             />
           </div>
           <div className="form-group">
             <input
               type="password"
-              className="form-control input"
+              className=" input"
               id="exampleInputPassword1"
               placeholder="***********"
               onChange={(e) => {
@@ -77,24 +90,21 @@ export default function SignIn() {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary ">
+          <button type="submit" className=" btn-primary " style={{width:"100%"}}>
             Login
           </button>
         </form>
-        <a href="#!" class="forgot-password-link">
-          Forgot password?
-        </a>
+       
         <p class="login-card-footer-text">
           Don't have an account?{" "}
           <a href="/" class="text-reset">
             SIGN UP{" "}
           </a>
         </p>
-        <nav class="login-card-footer-nav">
-          <a href="#!">Terms of use.</a>
-          <a href="#!">Privacy policy</a>
-        </nav>
+       
       </div>
     </div>
+    </div>
+ </div>
   );
 }

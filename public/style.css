@@ -1,7 +1,7 @@
 .body{
   align-items: center!important;
   background-color: rgb(250, 251, 251);
-  margin: 2px;
+  margin: 0px;
   background-size: cover;
 }
 .signin{
@@ -12,20 +12,29 @@
   border-radius: 10px;
   max-width: 500px;
   color: white;
+ 
+  font-size: 20px;
+  display:flex;
+  justify-content: center;
+  top:"20%";
+  
 }
 .btn{
   width: 100%;
   padding: 40;
+  
 }
 .input{
-  padding: 20px;
+  padding: 2px;
+  width: 100%;
+  color: black;
 }
 .logo{
-  
-  max-width: 60px;
+  border-radius:50%;
+  max-width: 100px;
 }
 .small{
-  margin: 10%;
+  margin: 0%;
 }
 form{
   margin-bottom: 20px;
@@ -207,7 +216,7 @@ padding: 5px;
 }
 .inputproduct{
 background-color: khaki;
-font-size: large;
+font-size:25px;
 margin: 5px;
 margin-left: 0;
 }
