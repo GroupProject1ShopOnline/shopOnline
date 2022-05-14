@@ -1,7 +1,7 @@
 {
-  "homepage": "https://groupproject1shoponline.github.io/shopOnline",
+  "homepage": "http://localhost:3000/home",
   "name": "client",
-  "proxy": "https://tools-on-rent.herokuapp.com/",
+  "proxy": "http://localhost:3000/home",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,7 +13,7 @@
     "bootstrap": "^4.6.0",
     "emailjs-com": "^2.6.4",
     "gh-pages": "^3.1.0",
-    "jquery": "^3.5.1",
+    "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -33,7 +33,7 @@
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "npm run build",
-    "deploy":"gh-pages -d build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
