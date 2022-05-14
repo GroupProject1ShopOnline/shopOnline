@@ -45,7 +45,6 @@ function GeneratePID() {
     CurrentDate.getUTCMilliseconds() +
     "" +
     localStorage.getItem("email");
-  console.log(pidT);
   return pidT;
 }
 
@@ -77,7 +76,6 @@ export default function Product() {
   const history = useHistory();
   const handleSubmit = (e) => {
     const MoveToHome = () => {
-      console.log("Moving to home....");
       history.push("/home");
     };
 
@@ -97,7 +95,6 @@ export default function Product() {
         }
       );
 
-    console.log(itemData);
     e.preventDefault();
     if (
       submitValidate(
@@ -111,6 +108,7 @@ export default function Product() {
       )
     ) {
       try {
+        /* eslint-disable */
         const { data } = axios.post(
           "https://tools-on-rent.herokuapp.com/users/addItem",
           {
@@ -126,6 +124,7 @@ export default function Product() {
         );
         MoveToHome();
       } catch (error) {
+        /* eslint-disable */
         console.log(error);
       }
     } else {
@@ -136,7 +135,7 @@ export default function Product() {
   const classes = useStyles();
 
   return (
-    <div className="row" style={{ backgroundColor: "rgba(3, 33, 202)" }}>
+    <div className="row" style={{ backgroundColor: "rgba(255,255,102)" }}>
       <div
         className="halfPage"
         style={{ height: "100vh", justifyContent: "center", display: "flex" }}
@@ -178,7 +177,7 @@ export default function Product() {
                   alignSelf: "center",
                   justifySelf: "center",
                 }}
-                alt="preview"
+                // alt="preview"
               />
             </div>
           )}
@@ -188,22 +187,17 @@ export default function Product() {
         <div
           className="itemForm"
           style={{
-            backgroundImage: `url(https://www.vamosrayos.com/b/2020/01/blue-design-background-for-christening-floral-scaled.jpg)`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundAttachment: "fixed",
             alignItems: "center",
             height: "100vh",
           }}
         >
           <div className="addItemCardContent">
-            <div>
-              <form onSubmit={handleSubmit}>
+            <div style={{ height: "fit-content" }}>
+              <form onSubmit={handleSubmit} style={{ height: "fit-content" }}>
                 <h2
                   style={{
                     marginBottom: "10px",
                     marginTop: "10px",
-                    color: "white",
                     fontWeight: "bold",
                   }}
                 >
@@ -221,9 +215,9 @@ export default function Product() {
                     setItemData({ ...itemData, title: e.target.value.trim() });
                   }}
                   className={classes.textField}
-                  InputProps={{
-                    className: classes.input,
-                  }}
+                  style={{ fontWeight: "bold" }}
+                  InputProps={{ style: { fontSize: 13 } }}
+                  InputLabelProps={{ style: { fontSize: 16 } }}
                 />
                 <TextField
                   variant="outlined"
@@ -237,9 +231,9 @@ export default function Product() {
                     setItemData({ ...itemData, description: e.target.value });
                   }}
                   className={classes.textField}
-                  InputProps={{
-                    className: classes.input,
-                  }}
+                  style={{ fontWeight: "bold" }}
+                  InputProps={{ style: { fontSize: 13 } }}
+                  InputLabelProps={{ style: { fontSize: 16 } }}
                 />
                 <TextField
                   variant="outlined"
@@ -254,9 +248,9 @@ export default function Product() {
                   }}
                   type="number"
                   className={classes.textField}
-                  InputProps={{
-                    className: classes.input,
-                  }}
+                  style={{ fontWeight: "bold" }}
+                  InputProps={{ style: { fontSize: 13 } }}
+                  InputLabelProps={{ style: { fontSize: 16 } }}
                 />
                 <TextField
                   variant="outlined"
@@ -268,9 +262,9 @@ export default function Product() {
                     setItemData({ ...itemData, city: e.target.value });
                   }}
                   className={classes.textField}
-                  InputProps={{
-                    className: classes.input,
-                  }}
+                  style={{ fontWeight: "bold" }}
+                  InputProps={{ style: { fontSize: 13 } }}
+                  InputLabelProps={{ style: { fontSize: 16 } }}
                 />
                 <TextField
                   variant="outlined"
@@ -282,11 +276,11 @@ export default function Product() {
                     setItemData({ ...itemData, state: e.target.value });
                   }}
                   className={classes.textField}
-                  InputProps={{
-                    className: classes.input,
-                  }}
+                  style={{ fontWeight: "bold" }}
+                  InputProps={{ style: { fontSize: 13 } }}
+                  InputLabelProps={{ style: { fontSize: 16 } }}
                 />
-                <div style={{ paddingTop: "10px", color: "white" }}>
+                <div style={{ paddingTop: "10px", height: "fit-content" }}>
                   <FileBase
                     type="file"
                     multiple={false}
@@ -296,14 +290,15 @@ export default function Product() {
                     style={{ color: "red" }}
                   />
                 </div>
-                <div stye={{ paddingTop: "" }}>
+                <div style={{ height: "fit-content" }}>
                   <Button
                     variant="contained"
                     size="large"
                     fullWidth
-                    color="primary"
+                    color="secondary"
                     type="submit"
                     className={classes.button}
+                    style={{ fontSize: "14px", fontWeight: "bold" }}
                   >
                     Add
                   </Button>
@@ -329,122 +324,3 @@ export default function Product() {
     </div>
   );
 }
-
-{
-  /* <div style={{ marginTop: "50vh" }}>
-          <center>
-            <FileBase
-              type="file"
-              multiple={true}
-              onDone={({ base64 }) =>
-                setItemData({ ...itemData, selectedFile: base64 })
-              }
-            />
-          </center>
-        </div> */
-}
-
-// const { getRootProps, getInputProps, isDragActive } = useDropzone({
-//   accept: "image/*",
-//   type: "file",
-//   onDrop: (acceptedFiles) => {
-//     setImage(
-//       acceptedFiles.map((upFile) =>
-//         Object.assign(upFile, {
-//           preview: URL.createObjectURL(upFile),
-//         })
-//       )
-//     );
-//     setItemData({
-//       ...itemData,
-//       images: acceptedFiles.map((upFile) => upFile),
-//     });
-//   },
-// });
-
-// <div className="halfPage">
-//         <div
-//           style={{
-//             width: "100%",
-//             height: "100vh",
-//             alignItems: "center",
-//             justifyContent: "center",
-//             display: "flex",
-//           }}
-//           className="column"
-//         >
-//           <div className="column">
-//             <div {...getRootProps()}>
-//               <input {...getInputProps()} />
-//               {isDragActive ? (
-//                 <div
-//                   style={{
-//                     alignItems: "center",
-//                     justifyContent: "center",
-//                     display: "flex",
-//                     paddingBlock: "10px",
-//                   }}
-//                 >
-//                   <div
-//                     style={{
-//                       fontWeight: "bold",
-//                       fontSize: "20px",
-//                       color: "white",
-//                     }}
-//                   >
-//                     Drop the Image here to add.
-//                   </div>
-//                 </div>
-//               ) : (
-//                 <div
-//                   style={{
-//                     alignItems: "center",
-//                     justifyContent: "center",
-//                     display: "flex",
-//                     paddingBlock: "10px",
-//                   }}
-//                 >
-//                   <div
-//                     style={{
-//                       fontWeight: "bold",
-//                       fontSize: "20px",
-//                       color: "white",
-//                     }}
-//                   >
-//                     Drag & Drop Or Click to select Images.
-//                   </div>
-//                 </div>
-//               )}
-//             </div>
-//             <div
-//               className="row"
-//               style={{ justifyContent: "center", topPadding: "10px" }}
-//             >
-// {uploadedImage.map((upFile) => {
-//   return (
-//     <div
-//       style={{
-//         alignItems: "center",
-//         justifyContent: "center",
-//         display: "flex",
-//       }}
-//     >
-//       <img
-//         src={upFile.preview}
-//         style={{
-//           width: "80px",
-//           height: "80px",
-//           // border: "2px solid #ccc",
-//           marginLeft: "5px",
-//           marginRight: "5px",
-//           paddingBottom: "8px",
-//         }}
-//         alt="preview"
-//       />
-//     </div>
-//   );
-// })}
-//             </div>
-//           </div>
-//         </div>
-//       </div>

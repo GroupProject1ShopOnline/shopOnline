@@ -5,6 +5,7 @@ import Product from "./pages/product";
 import productpage from "./pages/productPage";
 import aboutPage from "./pages/about";
 import React from "react";
+/* eslint-disable */
 import { BrowserRouter, Link, Route } from "react-router-dom";
 const App = () => {
   return (

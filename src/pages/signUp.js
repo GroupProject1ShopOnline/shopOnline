@@ -54,7 +54,6 @@ export default function SignUp() {
   const history = useHistory();
 
   const MoveToHome = () => {
-    console.log("Moving to home....");
     history.push("/home");
   };
 
@@ -101,6 +100,7 @@ export default function SignUp() {
         localStorage.setItem("email", userData.email);
         MoveToHome();
       } catch (err) {
+        /* eslint-disable */
         console.log(err);
       }
     } else {

@@ -1,11 +1,11 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import emailjs from "emailjs-com";
 
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth() + 1; //January is 0!
-var yyyy = today.getFullYear();
+var todayV = new Date();
+var dd = todayV.getDate();
+var mm = todayV.getMonth() + 1; //January is 0!
+var yyyy = todayV.getFullYear();
 if (dd < 10) {
   dd = "0" + dd;
 }
@@ -22,7 +22,6 @@ function Product() {
     //dispatch(showallposts());
   }, postdata);
 
-  console.log(postdata);
   // alert(postdata)
   function sendEmail(e) {
     e.preventDefault();
@@ -36,12 +35,12 @@ function Product() {
       )
       .then(
         (result) => {
-          console.log(result.text);
           alert(
             "Congrats 🎉  One confirmation mail is sent to your email regarding the order please resend it to us after verifying the order 👍 ! Happy Shopping :)"
           );
         },
         (error) => {
+          /* eslint-disable */
           console.log(error.text);
         }
       );
@@ -107,6 +106,7 @@ function Product() {
               id=""
             />
             <input
+              style={{ marginLeft: "40px" }}
               className="inputproduct"
               type="time"
               name="time1"
@@ -125,6 +125,7 @@ function Product() {
             />
 
             <input
+              style={{ marginLeft: "40px" }}
               className="inputproduct"
               type="time"
               name="time2"
@@ -136,6 +137,7 @@ function Product() {
             <br />
             <h3>Your Phone</h3>
             <input
+              style={{ width: "370px" }}
               className="inputproduct"
               placeholder="+91 123456789"
               name="mytel"
@@ -146,6 +148,7 @@ function Product() {
             <br />
             <h3>Your Email</h3>
             <input
+              style={{ width: "370px" }}
               className="inputproduct"
               placeholder="abc@mail.com"
               name="email"
