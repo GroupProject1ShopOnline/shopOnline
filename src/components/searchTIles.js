@@ -21,24 +21,51 @@ function Tiles({ postdetails }) {
       );
       dispatch({ type: PRODUCTPAGELIVE, payload: dataw.data });
       //console.log(dataw.data);
-     // console.log(postdata);
+      // console.log(postdata);
       history.push("/product");
     } catch (err) {
-      
       console.log(err);
     }
   };
 
   return (
-    <div className="tilesIndividual" style={{textAlign:"center"}}>
-      <img style={{width:"60%", height:"auto"}}  src={ postdetails.images ||"https://media.istockphoto.com/vectors/image-preview-icon-picture-placeholder-for-website-or-uiux-design-vector-id1222357475?k=20&m=1222357475&s=612x612&w=0&h=jPhUdbj_7nWHUp0dsKRf4DMGaHiC16kg_FSjRRGoZEI="}/>
-      <h1> {postdetails.title}</h1>
-      <h2>₹ {postdetails.cpa} /hr</h2>
-     
-      <button className="buttonexplore1" value={postdetails.pid} type="submit" onClick={handleSubmit}>
-      View Details
-      </button>
-     
+    <div className="tilesIndividual" style={{ textAlign: "center" }}>
+      <div
+        style={{
+          width: "100%",
+          height: "140px",
+          dipslay: "flex",
+          alignContent: "center",
+          justifyContent: "center",
+        }}
+      >
+        <img
+          style={{
+            height: "auto",
+            width: "auto",
+            maxHeight: "100%",
+            maxWidth: "100%",
+          }}
+          src={
+            postdetails.images ||
+            "https://media.istockphoto.com/vectors/image-preview-icon-picture-placeholder-for-website-or-uiux-design-vector-id1222357475?k=20&m=1222357475&s=612x612&w=0&h=jPhUdbj_7nWHUp0dsKRf4DMGaHiC16kg_FSjRRGoZEI="
+          }
+        />
+      </div>
+
+      <div style={{ paddingTop: "10px" }}>
+        <h1> {postdetails.title}</h1>
+        <h2>₹ {postdetails.cpa} /hr</h2>
+
+        <button
+          className="buttonexplore1"
+          value={postdetails.pid}
+          type="submit"
+          onClick={handleSubmit}
+        >
+          View Details
+        </button>
+      </div>
     </div>
   );
 }
