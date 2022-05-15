@@ -1,6 +1,7 @@
 {
-  "homepage": "https://groupproject1shoponline.github.io/shopOnline",
+  "homepage": "https://tools-forest.netlify.app/home",
   "name": "client",
+  "proxy": "https://tools-forest.netlify.app/home",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
