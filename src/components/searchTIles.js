@@ -20,10 +20,11 @@ function Tiles({ postdetails }) {
         searchmee
       );
       dispatch({ type: PRODUCTPAGELIVE, payload: dataw.data });
-      console.log(dataw.data);
-      console.log(postdata);
+      //console.log(dataw.data);
+     // console.log(postdata);
       history.push("/product");
     } catch (err) {
+      
       console.log(err);
     }
   };

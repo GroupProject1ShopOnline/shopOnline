@@ -43,19 +43,19 @@ function Header() {
     //dispatch(showallposts());
   }, [postdata, citynamesData]);
 
-  console.log(postdata);
+  //console.log(postdata);
 
   const user = localStorage.getItem("name");
 
   const handleSubmit = async (e) => {
-    console.log(searchdata);
+    //console.log(searchdata);
 
     const searchmee = {
       state: searchdata.state,
       city: searchdata.city,
       tool: searchdata.tool,
     };
-    console.log(searchmee);
+    //console.log(searchmee);
 
     e.preventDefault();
     try {
@@ -64,12 +64,13 @@ function Header() {
         searchmee
       );
       dispatch({ type: SEARCH, payload: dataw.data });
-      console.log("qq");
-      console.log(dataw.data);
+      //console.log("qq");
+      //console.log(dataw.data);
 
        setFilterdata(dataw.data);
       //console.log(postdata);
     } catch (err) {
+      /* eslint-disable */
       console.log(err);
     }
   };
@@ -81,7 +82,7 @@ function Header() {
     const searchmee = {
       state: e,
     };
-    console.log(searchmee);
+    //console.log(searchmee);
 
     // e.preventDefault();
     try {
@@ -91,8 +92,9 @@ function Header() {
       );
       dispatch({ type: CITYNAME, payload: dataw.data });
 
-      console.log("ok");
+      //console.log("ok");
     } catch (err) {
+      /* eslint-disable */
       console.log(err);
     }
   };
@@ -138,8 +140,8 @@ function Header() {
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
     // the string searched and for the second the results.
-    console.log("1");
-    console.log(string, results)
+    //setFilterdata(results);
+    console.log(string, results);
   }
 
   const handleOnHover = (result) => {
@@ -190,7 +192,7 @@ function Header() {
           <div className="texti">
             <h1 className="text ">Earn Passive </h1>
             <h1 className="text">Rental Income </h1>
-            <button className="buttonexplore ">Rent Your Tools Today  </button>
+            <a href="/products" className="buttonexplore ">Rent Your Tools Today  </a>
           </div>
 
           <div className="slide-container">
