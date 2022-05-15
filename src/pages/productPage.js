@@ -17,7 +17,7 @@ var today = yyyy + "-" + mm + "-" + dd;
 
 function Product() {
   const postdata = useSelector((state) => state.productu);
-
+/* eslint-disable */
   useEffect(() => {
     //dispatch(showallposts());
   }, postdata);

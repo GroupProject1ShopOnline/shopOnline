@@ -126,8 +126,10 @@ margin-left: 7vw;
 }
 .searchme{
  
-  background-color: #fbfae3;
+  background-color: #f5ba6c;
   align-self: center;
+  padding: 5px;
+  margin-top:20px;
 }
 .searchname{
   margin: 20px;

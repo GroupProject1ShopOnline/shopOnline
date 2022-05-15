@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import { PRODUCTPAGELIVE } from "../components/actions/actionType";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function Tiles({ postdetails }) {
-  const postdata = useSelector((state) => state.productu);
+ 
   let history = useHistory();
   const dispatch = useDispatch();
 
@@ -38,6 +38,7 @@ function Tiles({ postdetails }) {
           alignContent: "center",
           justifyContent: "center",
         }}
+        key={postdetails._id}
       >
         <img
           style={{
@@ -50,6 +51,7 @@ function Tiles({ postdetails }) {
             postdetails.images ||
             "https://media.istockphoto.com/vectors/image-preview-icon-picture-placeholder-for-website-or-uiux-design-vector-id1222357475?k=20&m=1222357475&s=612x612&w=0&h=jPhUdbj_7nWHUp0dsKRf4DMGaHiC16kg_FSjRRGoZEI="
           }
+          alt="an "
         />
       </div>
 

@@ -84,6 +84,7 @@ export default function SignUp() {
       )
     ) {
       try {
+        /* eslint-disable */
         const {} = axios.post(
           "https://tools-on-rent.herokuapp.com/users/addUser",
           {

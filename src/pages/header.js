@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import SearchTiles from "../components/searchTIles";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,8 +6,9 @@ import { SEARCH, CITYNAME } from "../components/actions/actionType";
 import "./slideshow.css"
 import 'react-slideshow-image/dist/styles.css'
 import { Slide } from 'react-slideshow-image';
-import { ReactSearchAutocomplete } from 'react-search-autocomplete';
+import {  useHistory } from "react-router-dom";
 function Header() {
+  let history = useHistory();
   //   const [userData, setUserData] = useState({
   //     name: "",
   //     state: "",
@@ -21,17 +22,37 @@ function Header() {
     city: "",
     tool: "",
   });
-  const [filterdata, setFilterdata] = useState([{ title: "green", id: "1" }]);
+  //search box
+  const items = [
+    {
+      _id: 0,
+      name: 'Cobol'
+    },
+    {
+      id: 1,
+      name: 'JavaScript'
+    },
+    {
+      id: 2,
+      name: 'Basic'
+    },
+    {
+      id: 3,
+      name: 'PHP'
+    },
+    {
+      id: 4,
+      name: 'Java'
+    }
+  ]
 
-  const postme = [
-    { tool: "hammer", state: "Rajputana", city: "jaipur" },
-    { tool: "drill", state: "raj", city: "degana" },
-  ];
+  const [filterdata, setFilterdata] = useState([]);
+
   const postdata = useSelector((state) => state.searchu);
   const citynamesData = useSelector((state) => state.cityu);
   var citynamesData2 = [];
-
-  console.log(citynamesData);
+const[showfilterbox,setFilterbox]=useState(false);
+  //console.log(citynamesData);
   for (var i = 0; i < citynamesData.length; i++) {
     citynamesData2.push(citynamesData[i].city);
   }
@@ -41,12 +62,27 @@ function Header() {
 
   useEffect(() => {
     //dispatch(showallposts());
+    console.clear();
+    console.log("Happy Shopping !!!");
+    console.log(user.toString());
+    if(user.toString()==="null"){
+      history.push("/SignIn");
+    }
+   // history.push("/SignIn");
   }, [postdata, citynamesData]);
 
   //console.log(postdata);
-
-  const user = localStorage.getItem("name");
-
+/* eslint-disable */
+  const user = localStorage.getItem("email");
+function logout(){
+  
+  localStorage.setItem("name", null);
+        localStorage.setItem("state", null);
+        localStorage.setItem("city", null);
+        localStorage.setItem("email", null);
+        alert("Logged out successfully");
+        history.push("/SignIn")
+}
   const handleSubmit = async (e) => {
     //console.log(searchdata);
 
@@ -66,8 +102,17 @@ function Header() {
       dispatch({ type: SEARCH, payload: dataw.data });
       //console.log("qq");
       //console.log(dataw.data);
+      var arr1 = dataw.data;
+      var newarr = [];
+      for (let i = 0; i < arr1.length; i++) {
+        newarr.push({ title: arr1[i].title });
 
-       setFilterdata(dataw.data);
+      }
+      const finalarr = newarr;
+     // console.log("hm");
+      //console.log(finalarr);
+      setFilterdata(dataw.data);
+      setFilterbox(true);
       //console.log(postdata);
     } catch (err) {
       /* eslint-disable */
@@ -113,58 +158,6 @@ function Header() {
     },
   ];
 
-  //search box
-  const items = [
-    {
-      id: 0,
-      name: 'Cobol'
-    },
-    {
-      id: 1,
-      name: 'JavaScript'
-    },
-    {
-      id: 2,
-      name: 'Basic'
-    },
-    {
-      id: 3,
-      name: 'PHP'
-    },
-    {
-      id: 4,
-      name: 'Java'
-    }
-  ]
-
-  const handleOnSearch = (string, results) => {
-    // onSearch will have as the first callback parameter
-    // the string searched and for the second the results.
-    //setFilterdata(results);
-    console.log(string, results);
-  }
-
-  const handleOnHover = (result) => {
-    // the item hovered
-    console.log(result)
-  }
-
-  const handleOnSelect = (item) => {
-    // the item selected
-    console.log(item)
-  }
-
-  const handleOnFocus = () => {
-    console.log('Focused')
-  }
-
-  const formatResult = (item) => {
-    return (
-      <>
-        <span style={{ display: 'block', textAlign: 'left' }}>{item.title}</span>
-      </>
-    )
-  }
 
 
   return (
@@ -173,7 +166,7 @@ function Header() {
         <div className="Mheader ">
           <div>
             <img className="logoheader" src="logo192.png" />
-            <a className="a">Help</a>
+            <div style={{ display:"inline-block"}}  className="a">Hi {user}</div>
             <a className="a" href="/products">
               Rent your tools
             </a>
@@ -182,6 +175,9 @@ function Header() {
             </a>
             <a className="a" href="/signIn">
               Login
+            </a>
+            <a className="a" onClick={logout}>
+              Logout
             </a>
           </div>
         </div>
@@ -214,69 +210,60 @@ function Header() {
 
 
       <div className="searchme">
-        <form noValidate onSubmit={handleSubmit}>
-          <div style={{display: 'inline-block'}}>
-          <select
-            className="searchname a1"
-            value={searchdata.state}
-            name="state"
-            id="state"
-            onChange={(e) => {
-              setsearchdata({ ...searchdata, state: e.target.value });
-              findcityname(e.target.value);
-            }}
-          >
-            <option value="Select your state">Select your state</option>
-            <option value="Rajasthan">Rajasthan</option>
-            <option value="Madhya Pradesh">madhya pradesh</option>
-            <option value="Uttar Pradesh">Uttar Pradesh</option>
-            <option value="Goa">Goa</option>
-          </select>
-          <select
-            className="searchname a1"
-            value={searchdata.city}
-            name="city"
-            id="city"
-            onChange={(e) => {
-              setsearchdata({ ...searchdata, city: e.target.value });
-              handleSubmit(e);
-            }}
-          >
-            <option value="Select your city">Select your city</option>
+        <form >
+          <div style={{ display: 'inline-block' }}>
+            <select
+              className="searchname a1"
+              value={searchdata.state}
+              name="state"
+              id="state"
+              onChange={(e) => {
+                setsearchdata({ ...searchdata, state: e.target.value });
+                findcityname(e.target.value);
+              }}
+            >
+              <option key="0" value="Select your state">Select your state</option>
+              <option key="1" value="Rajasthan">Rajasthan</option>
+              <option key="2" value="Madhya Pradesh">madhya pradesh</option>
+              <option key="3" value="Uttar Pradesh">Uttar Pradesh</option>
+              <option key="4" value="Goa">Goa</option>
+            </select>
+            <select
+              className="searchname a1"
+              value={searchdata.city}
+              name="city"
+              id="city"
+              onChange={(e) => {
+                setsearchdata({ ...searchdata, city: e.target.value });
+                handleSubmit(e);
+              }}
+            >
+              <option value="Select your city">Select your city</option>
 
-            {citynamesData3.map((post) => (
-              <option value={post}> 1 {post}</option>
+              {citynamesData3.map((post) => (
+                <option key={post} value={post}> 1 {post}</option>
 
-              //<SearchTiles postdetails={post} />
-            ))}
-            <option value="null">we only have services in Above Cities</option>
-          </select>
+                //<SearchTiles postdetails={post} />
+              ))}
+               </select>
 
-          </div>
-          {/* <input
-            className="searchname a1"
-            type="text"
-            placeholder="type tool name"
-            value={searchdata.tool}
-            onChange={(e) => {
-              setsearchdata({ ...searchdata, tool: e.target.value });
-            }}
-          /> */}
-          {/* <button className="buttonSearch ">
-            <img src="https://img.icons8.com/pastel-glyph/64/000000/search--v3.png" />
-          </button> */}
+           {showfilterbox?<>
+            <input className="searchname a1" type="text" placeholder="Filter results...."
+              onChange={(e) => {
+                //  setUserData({ ...userData, pass: e.target.value });
+                //console.log(postdata);
+                let newdata = postdata.filter((unit) => {
+                  var t1 = unit.title.toLowerCase();
+                  var e1 = e.target.value.toLowerCase();
+                  return t1.indexOf(e1) !== -1;
+                });
+               // console.log(newdata);
+                setFilterdata(newdata);
 
-          <div style={{ width: 400,margin:'20px' }}  >
-            <ReactSearchAutocomplete
-              items={filterdata}
-              fuseOptions={{ keys: ["title","description"] }}
-            onSearch={handleOnSearch}
-            onHover={handleOnHover}
-            onSelect={handleOnSelect}
-            onFocus={handleOnFocus}
-            autoFocus
-            formatResult={formatResult}
+              }}
+
             />
+           </>:<></>}
           </div>
 
 
@@ -284,8 +271,12 @@ function Header() {
         </form>
       </div>
 
+
+
+
+
       <div className="tiles">
-        {postdata.map((post) => (
+        {filterdata.map((post) => (
           <SearchTiles postdetails={post} />
         ))}
       </div>

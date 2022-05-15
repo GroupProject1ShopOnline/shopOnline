@@ -1,6 +1,6 @@
 import { CITYNAME } from "../components/actions/actionType";
-
-export default (users = [{city:"Goa"}], action) => {
+/* eslint-disable */
+export default (users = [], action) => {
   switch (action.type) {
     case CITYNAME:
       return action.payload;
